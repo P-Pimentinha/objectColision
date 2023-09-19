@@ -3,7 +3,7 @@ import { drawObstacles, obstacles } from './obstacles.js';
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-const player = new Player(100, 20, 50, 50, 5);
+const player = new Player(180, 280, 38, 38, 4);
 
 function gameLoop() {
   //clear
@@ -17,10 +17,10 @@ function gameLoop() {
   player.update(keys);
 
   //colisions
-  player.colisionWall(canvas);
+  // player.colisionWall(canvas);
   player.colisionObj(obstacles);
 
-  requestAnimationFrame(gameLoop);
+  // requestAnimationFrame(gameLoop);
 }
 
 // Keyboard input handling
