@@ -1,41 +1,57 @@
 // Requiring fs module in which
 // writeFile function is defined.
-const fs = require('fs');
+// const fs = require('fs');
+import obstacles from '../ObstaclesArray/obstaclesArray.js';
+import Alien from '../Aliens.js';
 
 // Data which will write in a file.
 
-let initialColumn = 6;
-let initialRow = 6;
+function enemiePosition() {
+  let initialColumn = 6;
+  let initialRow = 6;
 
-let arayTest = [];
-let i = 0;
+  let initialColumnT = 17;
+  let initialRowT = 17;
 
-// 150 == width * height
-while (i < 150) {
-  arayTest.push({ x: initialColumn, y: initialRow });
-  initialRow += 39;
-  i++;
+  let enemyPosition = [];
+  let i = 0;
 
-  if (i % 15 === 0) {
-    initialColumn += 39;
-    initialRow = 6;
+  while (i < 150) {
+    let testRow = { x: initialColumn, y: initialRow, width: 37, height: 37 };
+    let newRow = { x: initialColumnT, y: initialRowT, width: 15, height: 15 };
+    if (filter(obstacles, testRow)) {
+      enemyPosition.push(new Alien(initialColumnT, initialRowT, 15, 15));
+    }
+
+    initialRow += 39;
+    initialRowT += 39;
+    i++;
+
+    if (i % 15 === 0) {
+      initialColumn += 39;
+      initialColumnT += 39;
+      initialRow = 6;
+      initialRowT = 17;
+    }
   }
+
+  return enemyPosition;
 }
 
-const jsonArrayAsString = JSON.stringify(arayTest, null, 2); // 2 spaces for indentation
+// excludes from array the positions taken by the blocks
+function filter(arr1, targetObject) {
+  const isObjectInArray = arr1.some(
+    (obj) => obj.x === targetObject.x && obj.y === targetObject.y
+  );
 
-// Write data in 'Output.txt' .
-fs.writeFile('Output.txt', jsonArrayAsString, (err) => {
-  // In case of a error throw err.
-  if (err) throw err;
-});
+  if (isObjectInArray) return false;
+  return true;
+}
 
-// for (let i = 0; i < 100; i++) {
-//   if ((reset = 10 && initialRow === 591)) {
-//     console.log(arayTest);
-//     break;
-//   }
-//   console.log(initialRow);
-//   initialRow += 39;
-//   arayTest.push({ X: 1, y: 1 });
-// }
+// const jsonArrayAsString = JSON.stringify(arayTest, null, 2); // 2 spaces for
+// fs.writeFile('Output.txt', jsonArrayAsString, (err) => {
+//   // In case of a error throw err.
+//   if (err) throw err;
+// });
+
+export { enemiePosition };

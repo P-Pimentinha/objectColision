@@ -64,6 +64,20 @@ class Player {
       }
     });
   }
+
+  colisionEnemies(enemies) {
+    enemies.forEach((enemie) => {
+      if (
+        this.x <= enemie.x + enemie.width &&
+        this.x + this.width >= enemie.x &&
+        this.y <= enemie.y + enemie.height &&
+        this.y + this.height >= enemie.y
+      ) {
+        console.log(enemie);
+        enemie.setPosition(6, 6);
+      }
+    });
+  }
 }
 
 export default Player;
