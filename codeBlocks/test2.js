@@ -10,6 +10,7 @@ let initialRow = 6;
 let arayTest = [];
 let i = 0;
 
+// 150 == width * height
 while (i < 150) {
   arayTest.push({ x: initialColumn, y: initialRow });
   initialRow += 39;
