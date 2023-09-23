@@ -1,5 +1,6 @@
 class Alien {
-  constructor(x, y, width, height) {
+  constructor(id, x, y, width, height) {
+    this.id = id;
     this.x = x;
     this.y = y;
     this.width = width;

@@ -73,8 +73,11 @@ class Player {
         this.y <= enemie.y + enemie.height &&
         this.y + this.height >= enemie.y
       ) {
-        console.log(enemie);
-        enemie.setPosition(6, 6);
+        const index = enemies.findIndex((item) => item.id === enemie.id);
+
+        if (index !== -1) {
+          enemies.splice(index, 1);
+        }
       }
     });
   }

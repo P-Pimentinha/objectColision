@@ -4,8 +4,6 @@
 import obstacles from '../data/obstaclesDataArray.js';
 import Alien from '../Aliens.js';
 
-// Data which will write in a file.
-
 function enemiePosition() {
   let initialColumn = 6;
   let initialRow = 6;
@@ -53,5 +51,3 @@ function filter(arr1, targetObject) {
 //   // In case of a error throw err.
 //   if (err) throw err;
 // });
-
-export { enemiePosition };

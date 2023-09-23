@@ -1,16 +1,16 @@
 import Player from './Player.js';
-
 import obstacles from './data/obstaclesDataArray.js';
-
-import { enemiePosition } from './codeBlocks/test2.js';
+import { enemiePosition } from './data/enemiesDataArray.js';
 import { draw } from './functions/draw.js';
+import playerHouse from './data/playerHouse.js';
 
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-const player = new Player(180, 280, 36, 36, 4);
+const player = new Player(182, 310, 36, 36, 4);
 
 let enemiesPositionArray = enemiePosition();
+console.log(enemiesPositionArray);
 
 function gameLoop() {
   //clear
@@ -20,6 +20,8 @@ function gameLoop() {
   draw(ctx, enemiesPositionArray, 'yellow');
   //draws the obstacles
   draw(ctx, obstacles, 'red');
+  // draw player house
+  draw(ctx, playerHouse, 'orange');
 
   player.draw(ctx);
 
@@ -27,8 +29,11 @@ function gameLoop() {
   player.update(keys);
 
   //colisions
+  player.colisionObj(playerHouse);
   player.colisionObj(obstacles);
+
   player.colisionEnemies(enemiesPositionArray);
+  console.log(enemiesPositionArray.length);
 
   // requestAnimationFrame(gameLoop);
 }
