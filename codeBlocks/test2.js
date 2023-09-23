@@ -1,7 +1,7 @@
 // Requiring fs module in which
 // writeFile function is defined.
 // const fs = require('fs');
-import obstacles from '../ObstaclesArray/obstaclesArray.js';
+import obstacles from '../data/obstaclesDataArray.js';
 import Alien from '../Aliens.js';
 
 // Data which will write in a file.

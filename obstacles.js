@@ -1,4 +1,4 @@
-import obstacles from './ObstaclesArray/obstaclesArray.js';
+import obstacles from './data/obstaclesDataArray.js';
 
 function drawObstacles(ctx) {
   obstacles.forEach((obstacle) => {

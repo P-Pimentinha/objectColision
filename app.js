@@ -1,8 +1,10 @@
 import Player from './Player.js';
-import { drawObstacles } from './obstacles.js';
-import obstacles from './ObstaclesArray/obstaclesArray.js';
-import { drawEnemies } from './enemies.js';
+
+import obstacles from './data/obstaclesDataArray.js';
+
 import { enemiePosition } from './codeBlocks/test2.js';
+import { draw } from './functions/draw.js';
+
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -14,9 +16,10 @@ function gameLoop() {
   //clear
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  //draw
-  drawEnemies(ctx, enemiesPositionArray);
-  drawObstacles(ctx);
+  //draws the enemies
+  draw(ctx, enemiesPositionArray, 'yellow');
+  //draws the obstacles
+  draw(ctx, obstacles, 'red');
 
   player.draw(ctx);
 
