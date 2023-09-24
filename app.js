@@ -4,6 +4,7 @@ import { enemiePosition } from './data/enemiesDataArray.js';
 import { draw } from './functions/draw.js';
 import playerHouse from './data/playerHouse.js';
 
+const score = document.getElementById('score');
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -16,10 +17,13 @@ function gameLoop() {
   //clear
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  //
+  score.textContent = player.getScore();
+
   //draws the enemies
   draw(ctx, enemiesPositionArray, 'yellow');
   //draws the obstacles
-  draw(ctx, obstacles, 'red');
+  draw(ctx, obstacles, 'blue');
   // draw player house
   draw(ctx, playerHouse, 'orange');
 
@@ -33,7 +37,6 @@ function gameLoop() {
   player.colisionObj(obstacles);
 
   player.colisionEnemies(enemiesPositionArray);
-  console.log(enemiesPositionArray.length);
 
   // requestAnimationFrame(gameLoop);
 }

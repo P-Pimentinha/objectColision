@@ -3,15 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
-    <canvas
-      id="myCanvas"
-      width="400"
-      height="595"
-      style="border: 1px solid #000000"
-    ></canvas>
+    <!-- <div class="center-container">
+      <div class="scoreboard">
+        <div class="pacman-icon">PAC-MAN</div>
+        <p id="score">Hello</p>
+      </div>
+      <canvas
+        id="myCanvas"
+        width="400"
+        height="595"
+        style="border: 1px solid #000000"
+      ></canvas>
+    </div> -->
+
+    <div class="container">
+      <div class="left-column">
+        <div class="scoreboard">
+          <div class="pacman-icon">PAC-MAN</div>
+          <p id="score"></p>
+        </div>
+      </div>
+      <div class="middle-column">
+        <!-- Canvas for your game goes here -->
+        <canvas
+          id="myCanvas"
+          width="400"
+          height="595"
+          style="border: 1px solid #000000"
+        ></canvas>
+      </div>
+      <div class="right-column">
+        <!-- Empty column (no content) -->
+      </div>
+    </div>
+
     <script type="module" src="app.js"></script>
   </body>
 </html>

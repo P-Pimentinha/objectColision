@@ -1,9 +1,9 @@
 const obstacles = [
   //Outside Walls
-  { x: 0, y: 0, width: 400, height: 5 },
-  { x: 0, y: 0, width: 5, height: 590 },
-  { x: 395, y: 0, width: 5, height: 590 },
-  { x: 0, y: 590, width: 400, height: 5 },
+  { x: 0, y: 0, width: 400, height: 6 },
+  { x: 0, y: 0, width: 6, height: 590 },
+  { x: 395, y: 0, width: 6, height: 590 },
+  { x: 0, y: 590, width: 400, height: 6 },
 
   //house
   { x: 162, y: 279 },

@@ -5,10 +5,21 @@ class Player {
     this.width = width;
     this.height = height;
     this.speed = speed;
+    this.score = 0;
+  }
+
+  //Getters
+  getScore() {
+    return this.score;
+  }
+
+  //setters
+  setScore() {
+    this.score++;
   }
 
   draw(ctx) {
-    ctx.fillStyle = 'blue';
+    ctx.fillStyle = '#ffd700';
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
@@ -73,6 +84,7 @@ class Player {
         this.y <= enemie.y + enemie.height &&
         this.y + this.height >= enemie.y
       ) {
+        this.setScore();
         const index = enemies.findIndex((item) => item.id === enemie.id);
 
         if (index !== -1) {
