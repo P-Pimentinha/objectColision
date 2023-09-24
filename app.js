@@ -3,12 +3,14 @@ import obstacles from './data/obstaclesDataArray.js';
 import { enemiePosition } from './data/enemiesDataArray.js';
 import { draw } from './functions/draw.js';
 import playerHouse from './data/playerHouse.js';
+import Predator from './Predator.js';
 
 const score = document.getElementById('score');
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-const player = new Player(182, 310, 36, 36, 4);
+const player = new Player(182, 310, 36, 36, 3);
+const predator = new Predator(32, 12, 20, 20, 3, '#00FFFF');
 
 let enemiesPositionArray = enemiePosition();
 console.log(enemiesPositionArray);
@@ -26,7 +28,9 @@ function gameLoop() {
   draw(ctx, obstacles, 'blue');
   // draw player house
   draw(ctx, playerHouse, 'orange');
-
+  predator.draw(ctx);
+  predator.update(obstacles);
+  //player
   player.draw(ctx);
 
   //update
@@ -38,7 +42,7 @@ function gameLoop() {
 
   player.colisionEnemies(enemiesPositionArray);
 
-  // requestAnimationFrame(gameLoop);
+  requestAnimationFrame(gameLoop);
 }
 
 // Keyboard input handling
