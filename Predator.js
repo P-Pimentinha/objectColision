@@ -6,6 +6,9 @@ class Predator {
     this.height = height;
     this.speed = speed;
     this.color = color;
+    this.counter = 0;
+    this.forward = false;
+    this.backwards = false;
   }
 
   draw(ctx) {
@@ -13,37 +16,29 @@ class Predator {
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
-  update(obstacles) {
-    obstacles.forEach((obstacle) => {
-      if (
-        this.x <= obstacle.x + obstacle.width &&
-        this.x + this.width >= obstacle.x &&
-        this.y <= obstacle.y + obstacle.height &&
-        this.y + this.height >= obstacle.y
-      ) {
-        var overlapX =
-          Math.min(this.x + this.width, obstacle.x + obstacle.width) -
-          Math.max(this.x, obstacle.x);
-        var overlapY =
-          Math.min(this.y + this.height, obstacle.y + obstacle.height) -
-          Math.max(this.y, obstacle.y);
+  update(arr, speed) {
+    let arrSize = arr.length;
 
-        // Determine which direction has the smaller overlap and move the this accordingly
-        if (overlapX < overlapY) {
-          if (this.x < obstacle.x) {
-            r = this.x - 3;
-          } else {
-            this.x += this.speed;
-          }
-        } else {
-          if (this.y < obstacle.y) {
-            this.y -= overlapY;
-          } else {
-            this.y += overlapY;
-          }
-        }
-      }
-    });
+    if (this.counter == 0) {
+      this.backwards = false;
+      this.forward = true;
+    }
+
+    if (this.counter >= arrSize - speed) {
+      this.forward = false;
+      this.backwards = true;
+    }
+
+    this.x = arr[this.counter].x;
+    this.y = arr[this.counter].y;
+
+    if (this.forward) {
+      this.counter += speed;
+    }
+
+    if (this.backwards) {
+      this.counter -= speed;
+    }
   }
 }
 

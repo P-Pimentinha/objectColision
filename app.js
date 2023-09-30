@@ -4,16 +4,20 @@ import { enemiePosition } from './data/enemiesDataArray.js';
 import { draw } from './functions/draw.js';
 import playerHouse from './data/playerHouse.js';
 import Predator from './Predator.js';
+import predatorOnePattern from './algorithm/predatorPatternOne.js';
+import predatorTwoPattern from './algorithm/predatorPatternTwo.js';
 
 const score = document.getElementById('score');
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
-const player = new Player(182, 310, 36, 36, 3);
-const predator = new Predator(32, 12, 20, 20, 3, '#00FFFF');
+const player = new Player(182, 310, 36, 36, 2);
+const predator = new Predator(14, 14, 24, 24, 1, '#00FFFF');
+const predatorTwo = new Predator(365, 14, 24, 24, 1, 'pink');
 
 let enemiesPositionArray = enemiePosition();
-console.log(enemiesPositionArray);
+let predatorPatternOne = predatorOnePattern();
+let predatorPatternTwo = predatorTwoPattern();
 
 function gameLoop() {
   //clear
@@ -28,21 +32,25 @@ function gameLoop() {
   draw(ctx, obstacles, 'blue');
   // draw player house
   draw(ctx, playerHouse, 'orange');
+
+  //predator
   predator.draw(ctx);
-  predator.update(obstacles);
+  predator.update(predatorPatternOne, 2);
+
+  //predatorTwo
+  predatorTwo.draw(ctx);
+  predatorTwo.update(predatorPatternTwo, 2);
+
   //player
   player.draw(ctx);
-
   //update
   player.update(keys);
-
   //colisions
   player.colisionObj(playerHouse);
   player.colisionObj(obstacles);
-
   player.colisionEnemies(enemiesPositionArray);
 
-  requestAnimationFrame(gameLoop);
+  // requestAnimationFrame(gameLoop);
 }
 
 // Keyboard input handling

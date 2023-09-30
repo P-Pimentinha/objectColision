@@ -45,14 +45,6 @@ function enemiePosition() {
     }
   }
 
-  // const index = enemies.findIndex(
-  //   (item) => item.x === enemie.x && item.y === enemie.y
-  // );
-
-  // if (index !== -1) {
-  //   enemies.splice(index, 1);
-  // }
-
   return enemyPosition;
 }
 
