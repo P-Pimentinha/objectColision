@@ -6,6 +6,7 @@ class Player {
     this.height = height;
     this.speed = speed;
     this.score = 0;
+    this.GameOver = false;
   }
 
   //Getters
@@ -19,7 +20,7 @@ class Player {
   }
 
   draw(ctx) {
-    ctx.fillStyle = '#ffd700';
+    ctx.fillStyle = '#FFFF00';
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
 
@@ -90,6 +91,19 @@ class Player {
         if (index !== -1) {
           enemies.splice(index, 1);
         }
+      }
+    });
+  }
+
+  colisionPredator(predatorArr) {
+    predatorArr.forEach((predator) => {
+      if (
+        this.x <= predator.x + predator.width &&
+        this.x + this.width >= predator.x &&
+        this.y <= predator.y + predator.height &&
+        this.y + this.height >= predator.y
+      ) {
+        this.GameOver = true;
       }
     });
   }

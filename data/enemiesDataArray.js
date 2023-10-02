@@ -7,8 +7,8 @@ function enemiePosition() {
   let initialRow = 6;
 
   //used to position enemie
-  let initialColumnEnemie = 17;
-  let initialRownEnemie = 17;
+  let initialColumnEnemie = 22;
+  let initialRownEnemie = 22;
 
   //greed size
   let greedSize = 150;
@@ -28,7 +28,7 @@ function enemiePosition() {
     //function to filter the obstacles position
     if (filter(obstacles, comparsionRow)) {
       enemyPosition.push(
-        new Alien(id, initialColumnEnemie, initialRownEnemie, 15, 15)
+        new Alien(id, initialColumnEnemie, initialRownEnemie, 7, 7)
       );
       id++;
     }
@@ -41,7 +41,7 @@ function enemiePosition() {
       initialColumn += 39;
       initialColumnEnemie += 39;
       initialRow = 6;
-      initialRownEnemie = 17;
+      initialRownEnemie = 22;
     }
   }
 

@@ -1,40 +1,23 @@
+import {
+  xPlus,
+  xMinus,
+  yMinus,
+  yPlus,
+} from './helperFuntions/directionsLoop.js';
+
 let predatorOne = [];
 
 function predatorOnePattern() {
-  // x:14 -> x: 131 {x:131, y:14}
-  for (let i = 14; i < 132; i++) {
-    predatorOne.push({ x: i, y: 14 });
-  }
-
-  // y: 14 -> y:92 {x:131, y:92}
-  for (let i = 14; i < 93; i++) {
-    predatorOne.push({ x: 131, y: i });
-  }
-
-  // x:131 -> x: 53 {x:53, y:92}
-  for (let i = 131; i > 52; i--) {
-    predatorOne.push({ x: i, y: 92 });
-  }
-
-  //y: 92 -> y: 170 {x:53 ,y:170 }
-  for (let i = 92; i < 171; i++) {
-    predatorOne.push({ x: 53, y: i });
-  }
-
-  // x: 53 -> x: 14 {x:14 ,y:170 }
-  for (let i = 53; i > 14; i--) {
-    predatorOne.push({ x: i, y: 170 });
-  }
-
-  // y: 170 -> y: 248 {x:14 ,y:248 }
-  for (let i = 170; i < 249; i++) {
-    predatorOne.push({ x: 14, y: i });
-  }
-
-  // x: 14 -> x: 209 {x:209 ,y:248 }
-  for (let i = 14; i < 210; i++) {
-    predatorOne.push({ x: i, y: 248 });
-  }
+  yPlus(14, 14, 92, predatorOne);
+  xPlus(14, 92, 53, predatorOne);
+  yPlus(92, 53, 170, predatorOne);
+  xMinus(53, 170, 14, predatorOne);
+  yPlus(170, 14, 248, predatorOne);
+  xPlus(14, 248, 170, predatorOne);
+  yMinus(248, 170, 170, predatorOne);
+  xPlus(170, 170, 365, predatorOne);
+  yPlus(170, 365, 248, predatorOne);
+  xMinus(365, 248, 209, predatorOne);
 
   return predatorOne;
 }

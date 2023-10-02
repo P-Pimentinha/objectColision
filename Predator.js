@@ -11,6 +11,10 @@ class Predator {
     this.backwards = false;
   }
 
+  getPosition() {
+    return [{ x: this.x, y: this.y, width: this.width, height: this.height }];
+  }
+
   draw(ctx) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
