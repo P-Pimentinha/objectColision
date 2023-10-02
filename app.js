@@ -13,6 +13,8 @@ import predatorFourPattern from './algorithm/predatorPatternFour.js';
 const score = document.getElementById('score');
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
+const playerMainScreen = document.querySelector('.middle-column');
+const gameOver = document.querySelector('.middle-column-gameover');
 
 //Class
 const player = new Player(182, 310, 36, 36, 2);
@@ -22,6 +24,7 @@ const predatorThree = new Predator(365, 560, 23, 23, 1, '#FFB852');
 const predatorFour = new Predator(14, 560, 23, 23, 1, '#FF0000');
 
 let enemiesPositionArray = enemiePosition();
+
 let predatorPatternOne = predatorOnePattern();
 let predatorPatternTwo = predatorTwoPattern();
 let predatorPatternThree = predatorThreePattern();
@@ -29,6 +32,13 @@ let predatorPatternFour = predatorFourPattern();
 
 function gameLoop() {
   if (player.GameOver) {
+    playerMainScreen.classList.add('invisible');
+    gameOver.classList.remove('invisible');
+    return;
+  }
+  if (enemiesPositionArray.length == 0) {
+    playerMainScreen.classList.add('invisible');
+    gameOver.classList.remove('invisible');
     return;
   }
   //clear

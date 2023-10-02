@@ -21,14 +21,15 @@
     </div> -->
 
     <div class="container">
+      <!-- LEFT -->
       <div class="left-column">
         <div class="scoreboard">
           <div class="pacman-icon">PAC-MAN</div>
           <p id="score"></p>
         </div>
       </div>
+      <!-- MID -->
       <div class="middle-column">
-        <!-- Canvas for your game goes here -->
         <canvas
           id="myCanvas"
           width="400"
@@ -36,9 +37,10 @@
           style="border: 1px solid #000000"
         ></canvas>
       </div>
-      <div class="right-column">
-        <!-- Empty column (no content) -->
-      </div>
+
+      <div class="middle-column-gameover invisible">Game Over</div>
+      <!-- RIGHT -->
+      <div class="right-column"></div>
     </div>
 
     <script type="module" src="app.js"></script>
