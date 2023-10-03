@@ -29,10 +29,6 @@ class Player {
     if (keys.right) this.x += this.speed;
     if (keys.up) this.y -= this.speed;
     if (keys.down) this.y += this.speed;
-
-    // Check for collisions with obstacles
-
-    // Ensure the player stays within the canvas boundaries
   }
 
   colisionWall(canvas) {

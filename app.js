@@ -14,10 +14,13 @@ const score = document.getElementById('score');
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 const playerMainScreen = document.querySelector('.middle-column');
-const gameOver = document.querySelector('.middle-column-gameover');
+const winDisplay = document.querySelector('.middle-column-result');
+const restartBtn = document.querySelector('.btn');
+const winText = document.querySelector('.winText');
+const loseText = document.querySelector('.loseText');
 
 //Class
-const player = new Player(182, 310, 36, 36, 2);
+const player = new Player(182, 310, 24, 24, 2);
 const predator = new Predator(14, 14, 23, 23, 1, '#00FFFF');
 const predatorTwo = new Predator(365, 14, 23, 23, 1, 'pink');
 const predatorThree = new Predator(365, 560, 23, 23, 1, '#FFB852');
@@ -33,14 +36,17 @@ let predatorPatternFour = predatorFourPattern();
 function gameLoop() {
   if (player.GameOver) {
     playerMainScreen.classList.add('invisible');
-    gameOver.classList.remove('invisible');
+    winDisplay.classList.remove('invisible');
+    loseText.classList.remove('invisible');
     return;
   }
   if (enemiesPositionArray.length == 0) {
     playerMainScreen.classList.add('invisible');
-    gameOver.classList.remove('invisible');
+    winDisplay.classList.remove('invisible');
+    winText.classList.remove('invisible');
     return;
   }
+
   //clear
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = 'green';
@@ -81,6 +87,8 @@ function gameLoop() {
   player.colisionEnemies(enemiesPositionArray);
   player.colisionPredator(predator.getPosition());
   player.colisionPredator(predatorTwo.getPosition());
+  player.colisionPredator(predatorThree.getPosition());
+  player.colisionPredator(predatorFour.getPosition());
 
   requestAnimationFrame(gameLoop);
 }
@@ -107,4 +115,10 @@ document.addEventListener('keyup', function (e) {
   if (e.key === 'ArrowDown') keys.down = false;
 });
 
+restartBtn.addEventListener('click', restart);
 gameLoop();
+
+function restart() {
+  console.log('Hello');
+  location.reload();
+}
